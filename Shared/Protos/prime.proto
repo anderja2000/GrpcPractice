@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "PrimeDecomp";
+package prime;
+
+service PrimeCalculatorService {
+
+  // server streaming 
+  rpc DecomposeIntoPrimes (PrimeRequest) returns (stream PrimeResponse);
+
+  rpc ComputeAverage (stream LongNumberRequest)  returns (LongNumberResponse);
+
+}
+
+message PrimeRequest {
+  int64 number = 1;
+}
+
+message PrimeResponse {
+  int64 factor = 1;
+}
+
+message LongNumberRequest { 
+  int64 number = 1; 
+}
+
+message LongNumberResponse { 
+  double average = 1; 
+}
